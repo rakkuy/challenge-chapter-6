@@ -57,7 +57,8 @@ module.exports = {
       next(error);
     }
   },
-  get: async (req, res, next) => {
+
+  getId: async (req, res, next) => {
     try {
       const data = await articles.findUnique({
         where: {
@@ -72,6 +73,19 @@ module.exports = {
       next(error);
     }
   },
+
+  listArticle: async (req, res, next) => {
+    try {
+      const data = await articles.findMany();
+
+      return res.status(200).json({
+        data,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
   destroy: async (req, res, next) => {
     try {
       const data = await articles.delete({

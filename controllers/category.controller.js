@@ -44,13 +44,26 @@ module.exports = {
 
   // Untuk melihat data Category dengan id
   // localhost:3000/api/v1/category/id
-  get: async (req, res, next) => {
+  getId: async (req, res, next) => {
     try {
       const data = await category.findUnique({
         where: {
           id: parseInt(req.params.id),
         },
       });
+
+      return res.status(200).json({
+        data,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  // Untuk melihat data Category Semuanya
+  listCategory: async (req, res, next) => {
+    try {
+      const data = await category.findMany();
 
       return res.status(200).json({
         data,

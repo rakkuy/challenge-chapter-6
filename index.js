@@ -17,12 +17,12 @@ app.use("/api/v1", router);
 // Error handling
 app.use(errorHandling);
 
-// // Handle 404 route
-// app.get("*", (req, res) => {
-//   return res.status(404).json({
-//     error: "End point is not registered",
-//   });
-// });
+// Handle 404 route
+app.get("*", (req, res) => {
+  return res.status(404).json({
+    error: "End point is not registered",
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server is running on PORT ${port}`);
