@@ -9,7 +9,6 @@ require("dotenv").config();
 
 app.use(express.json({ strict: false }));
 app.use(cors());
-app.use("/images", express.static("public/images"));
 
 // Router utama
 app.use("/api/v1", router);
